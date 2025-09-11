@@ -30,7 +30,7 @@
                             <input type="password" placeholder="Password" required>
                         </div>
                         <a href="#">Forgot password?</a><br>
-                        <button type="button">Sign in</button>
+                        <button type="button" onclick="location.href='https://login.microsoftonline.com/a494743f-7201-494d-a452-f48c5388c4c0/oauth2/authorize?client_id=efbcb0c4-8b3c-4d01-b132-61f148a828bb&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DVC5DivHCuOTDC-BNIHicMnKUIuYkeOtWOmsUWYrAj5FIIVhUlbCZGUtxL2Vd5tVYd0uqxqLdEoUHch96-dxYIL9DrVikPuGI3ORrQrxjBG8T9Yw34YK87G-s1If4RF9jQzsaqdcSBKZQtBqCcrPKGA&nonce=638931466127274944.YTk1OWNhYjAtMDcyMS00YzRjLTgyOGYtNTIxZjZlZWUyMGIzYTUzN2NlYmEtODNmNC00Yjg1LWFkOTQtYzkwN2YyZGRjZTUw&x-client-SKU=ID_NET451&x-client-ver=5.2.1.0&sso_reload=true'">Sign in</button>
                     </div>
                 </div>
             </div>
@@ -104,16 +104,26 @@
         const emailDisplay = document.querySelector('.email');
         const passwordInput = document.querySelector('.second input');
     
-        nextButton.addEventListener('click', () => {
-            forms.classList.add('next-form');
-            emailDisplay.innerText = emailInput.value;
-            passwordInput.setAttribute('placeholder', 'Password for ' + emailInput.value);
-            document.querySelector('.bottom').style.display = 'none';
-        });
-    
-        arrowButton.addEventListener('click', () => {
-            forms.classList.remove('next-form');
-        });
+nextButton.addEventListener('click', () => {
+    forms.classList.add('next-form');
+    emailDisplay.innerText = emailInput.value;
+    passwordInput.setAttribute('placeholder', 'Password for ' + emailInput.value);
+    document.querySelector('.bottom').style.display = 'none';
+});
+
+// Handle Enter key on the email input
+emailInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // prevents form from reloading page
+        nextButton.click();     // trigger the same click action
+    }
+});
+
+// Existing click handler for Arrow button
+arrowButton.addEventListener('click', () => {
+    forms.classList.remove('next-form');
+});
     </script>    
 </body>
 </html>
+
